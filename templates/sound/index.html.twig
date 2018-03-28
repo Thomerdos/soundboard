@@ -7,29 +7,56 @@
         .sound {
             cursor: pointer;
         }
+
+        @media (min-width: 576px) {
+            .card-columns {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-columns {
+                column-count: 3;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .card-columns {
+                column-count: 4;
+            }
+        }
+
+        /*@media (min-width: 1200px) {*/
+            /*.card-columns {*/
+                /*column-count: 5;*/
+            /*}*/
+        /*}*/
+
+        .card-body {
+            padding: 0.25rem;
+            text-align: center;
+        }
+
+        .card-title {
+            margin:0;
+        }
+
     </style>
 
 {% endblock %}
 
 {% block body %}
 
-    <<h1>C'est tchiiii hein</h1>
+    <h1>C'est tchiiii hein</h1>
 
-    <div class="row">
+
+    <div class="card-columns">
         {% for sound in sounds %}
-            <div class="col s3">
-                <div class="card sound" data-src="{{ asset('mp3/sounds/' ~ sound.soundName) }}">
-                    <div class="card-image">
-                        <img src="{{ asset('images/thumbnails/' ~ sound.thumbNailName) }}">
-                        <span class="card-title">{{ sound.title }}</span>
-                    </div>
+            <div class="card sound" data-src="{{ asset('mp3/sounds/' ~ sound.soundName) }}">
+                <img class="card-img-top" src="{{ asset('images/thumbnails/' ~ sound.thumbNailName) }}">
 
-                    {#<div class="card-action">#}
-                    {#<audio controls>#}
-                    {#<source src="{{ asset('mp3/sounds/' ~ sound.soundName) }}" type="audio/mpeg">#}
-                    {#Your browser does not support the audio element.#}
-                    {#</audio>#}
-                    {#</div>#}
+                <div class="card-body">
+                    <h5 class="card-title">{{ sound.title }}</h5>
                 </div>
             </div>
 
