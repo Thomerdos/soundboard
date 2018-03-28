@@ -15,13 +15,13 @@ class SoundType extends AbstractType
         $builder
             ->add('title')
             ->add('thumbnailFile', VichFileType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => true,
                 'download_uri' => true,
                 'download_label' => true,
             ])
             ->add('soundFile', VichFileType::class, [
-                'required' => true,
+                'required' => false,
                 'allow_delete' => true,
                 'download_uri' => true,
                 'download_label' => true,
