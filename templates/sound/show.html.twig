@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sound{% endblock %}
+
+{% block body %}
+    <h1>Sound</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sound.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ sound.title }}</td>
+            </tr>
+            <tr>
+                <th>ThumbnailName</th>
+                <td>{{ sound.thumbnailName }}</td>
+            </tr>
+            <tr>
+                <th>ThumbnailSize</th>
+                <td>{{ sound.thumbnailSize }}</td>
+            </tr>
+            <tr>
+                <th>SoundName</th>
+                <td>{{ sound.soundName }}</td>
+            </tr>
+            <tr>
+                <th>SoundSize</th>
+                <td>{{ sound.soundSize }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ sound.updatedAt ? sound.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ sound.createdAt ? sound.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('sound_index') }}">back to list</a>
+
+    <a href="{{ path('sound_edit', {'id': sound.id}) }}">edit</a>
+
+    {{ include('sound/_delete_form.html.twig') }}
+{% endblock %}

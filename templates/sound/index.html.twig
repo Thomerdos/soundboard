@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sound index{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .sound {
+            cursor:pointer;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <<h1>C'est tchiiii hein</h1>
+
+        <div class="row">
+            {% for sound in sounds %}
+                <div class="col s3">
+                    <div class="card sound" data-src="{{ asset('mp3/sounds/' ~ sound.soundName) }}">
+                        <div class="card-image">
+                            <img src="{{ asset('images/thumbnails/' ~ sound.thumbNailName) }}">
+                            <span class="card-title">{{ sound.title }}</span>
+                        </div>
+
+                        {#<div class="card-action">#}
+                        {#<audio controls>#}
+                        {#<source src="{{ asset('mp3/sounds/' ~ sound.soundName) }}" type="audio/mpeg">#}
+                        {#Your browser does not support the audio element.#}
+                        {#</audio>#}
+                        {#</div>#}
+                    </div>
+                </div>
+
+            {% else %}
+                <h2>Pas encore de sons</h2>
+            {% endfor %}
+        </div>
+
+
+        <a href="{{ path('sound_new') }}">Ajouter un nouveau</a>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(function () {
+            $('.sound').click(function () {
+                let src = $(this).data('src');
+                let audio = new Audio(src);
+                audio.play();
+            })
+        })
+    </script>
+{% endblock %}
